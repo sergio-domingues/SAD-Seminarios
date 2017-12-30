@@ -1,0 +1,47 @@
+<html>
+
+<head>
+	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		var socket = io();
+
+		socket.on('message list', function (data) {
+
+			console.log(data);
+			var ml = JSON.parse(data);
+
+			for (var i in ml) {
+				addMessage(ml[i]);
+			}
+		});
+
+		function addMessage(msg) {
+			msg.ts = new Date(msg.ts);
+
+			item = 'Autor:' + msg.from + ', ts: ' + msg.ts.toLocaleString() +
+				', msg: ' + msg.msg;
+
+			$('#ml').append($('<li>').html(item));
+		}
+
+		$(function () {
+			socket.emit('get message list');
+			socket.emit('post message', 'Hola mundo', 'mudito', function (data) {
+				console.log(data);
+
+				var msg = JSON.parse(data);
+				addMessage(msg);
+			});
+		});
+	</script>
+
+	<body>
+
+		<p>LISTA:</p>
+		<ul id='ml'>
+		</ul>
+
+	</body>
+
+</html>
