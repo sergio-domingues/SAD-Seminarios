@@ -1,0 +1,17 @@
+  for:
+    build: ../forum/
+    links:
+     - sv
+    environment:
+     - $SERVER_PORT= sv 
+  client:
+    build: ../client/
+    links:
+     - sv
+    environment:
+     - $SERVER_PORT= sv
+  sv: 
+    build: ../server/
+    environment:
+     - $SERVER_PORT= sv
+
