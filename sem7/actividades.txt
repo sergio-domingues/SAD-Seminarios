@@ -1,0 +1,19 @@
+=============actividad 1================
+Una vez que esta implementado el pub/sub para la propagación de messages, podemos afirmar que tenemos um modelo
+de consistencia caché, las escrituras realizadas en un nodo son visualizadas en todos los nodos conectados.
+========================================
+
+=============actividad 2================
+Ejecutando uma escritura en N1 , N1W(x)1, los demás nodos N(2,3) van a recibir esa información y realizar N(2,3)R(x)1
+representando un modelo de consistencia caché.
+Lo mismo se en N1 pasar N1 W(x)W(x)W(x), los nodos N(2,3) van a realizar N(2,3) R(x)R(x)R(x), las messages 
+son enviadas secuencialmente y la lectura hecha en igual orden de los cambios, representando un modelo de consistencia FIFO.
+========================================
+
+=============actividad 3================
+se soportornam los mismo modelos de consistencia referidos anteriormente.
+========================================
+
+=============actividad 4================
+
+
